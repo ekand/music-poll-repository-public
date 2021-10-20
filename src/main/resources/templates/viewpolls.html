@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>View Polls</title>
+    <link rel="stylesheet" type="text/css" media="all" href="../static/css/musicpollstyle.css" th:href="@{/css/musicpollstyle.css}" />
+
+</head>
+<body>
+<h1>View and Search Polls</h1>
+<h2>Search Polls</h2>
+<form class="form-with-border">
+
+    <label for="polltitle">Poll Title<br>
+        <input type="text" id="polltitle" name="pollTitle" th:value="${pollTitle}">
+    </label><br>
+    <label for="songtitle">Song Title<br>
+        <input type="text" id="songtitle" name="songTitle" th:value="${songTitle}"><br>
+        <input type="submit" value="Search"><br>
+    </label>
+</form>
+<br>
+<!--<div th:if="${polllist!=null}">-->
+<!--    -->
+<!--</div>-->
+<h2>View Polls</h2>
+<div th:if="${#lists.isEmpty(pollList)}" class="div-with-border">
+    <p>No results found</p>
+</div>
+<div th:unless="${#lists.isEmpty(pollList)}">
+    <table class="table-with-border">
+
+        <thead>
+
+        <tr>
+            <th>Poll Title</th>
+            <th>View Poll</th>
+            <!--        <th>Total Votes</th>-->
+            <div sec:authorize="hasAuthority('ADMIN')">
+                <th>Edit Poll</th>
+                <th>Delete Poll</th>
+
+            </div>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="p : ${pollList}">
+            <td th:text="${p.getTitle()}">xxx filler content poll title xxx</td>
+            <td><a th:href="@{/viewpoll(id=${p.getId()})}">view</a></td>
+            <div sec:authorize="hasAuthority('ADMIN')">
+                <td>
+                    <a th:href="@{/editpoll(id=${p.id})}">Edit poll</a>
+                </td>
+                <td>
+                    <form th:action="@{/deletepoll(id=${p.getId()})}" method="get">
+                        <input type="submit" value="Delete">
+                        <input type="hidden" th:value="${p.getId()}" name="pollid"/>
+                    </form>
+                </td>
+            </div>
+
+            <!--        <a th:href="@{/category/edit/{id}(id=${category.idCategory})}">view</a>-->
+
+
+        </tr>
+        </tbody>
+</div>
+</table>
+</div>
+
+
+<div th:insert="~{footer::copy}">xxx My Filler Content xxx</div>
+</body>
+</html>

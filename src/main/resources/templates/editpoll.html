@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Create a New Poll</title>
+    <link rel="stylesheet" type="text/css" media="all" href="../static/css/musicpollstyle.css" th:href="@{/css/musicpollstyle.css}" />
+
+</head>
+<body>
+<h1>Edit an Existing Poll</h1>
+
+<!--@{/deletepoll(id=${p.getId()})}-->
+<form method="post" id="create-poll-form" th:action="@{/editpoll(id=${poll.getId()})}" class="form-with-border">
+    <div style="color:red" th:if="${errors}">
+        Errors exist
+        <div th:each="e : ${errors}">
+            <p th:text="${e}"></p>
+        </div>
+
+    </div>
+
+    <div><label for="pollTitle">Poll Title:</label><br>
+        <input type="text" id="pollTitle" name="pollTitle" th:value="${pollTitleEntry}"></div>
+    <div><label for="songOneTitle">Song One:</label><br>
+        <input type="text" id="songOneTitle" name="songOneTitle" th:value="${songOneTitleEntry}"></div>
+    <div><label for="songTwoTitle">Song Two:</label><br>
+        <input type="text" id="songTwoTitle" name="songTwoTitle" th:value="${songTwoTitleEntry}"><br></div>
+    <div><label for="songThreeTitle">Song Three:</label><br>
+        <input type="text" id="songThreeTitle" name="songThreeTitle" th:value="${songThreeTitleEntry}"><br></div>
+    <div><input type="submit" value="Update"><br><br></div>
+
+</form>
+
+<div th:insert="~{footer::copy}">xxx My Filler Content xxx</div>
+
+</body>
+</html>

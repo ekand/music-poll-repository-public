@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" media="all" href="../static/css/musicpollstyle.css" th:href="@{/css/musicpollstyle.css}" />
+
+</head>
+<body>
+
+<h3>Please log in</h3>
+<div style="color:black" th:if="${param.logout}">
+    You have been logged out.
+</div><br>
+<form th:action="@{/login}" method="post" class="form-with-border">
+    <div style="color:red" th:if="${param.error}">
+        Invalid username and/or password.
+    </div>
+
+
+    <div><label> Username: <br> <input type="text" name="username"/> </label></div>
+    <div><label> Password: <br> <input type="password" name="password"/> </label></div>
+    <div><input type="submit" value="Log In"/></div>
+</form>
+<div th:insert="~{footer::copy}">xxx My Filler Content xxx</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+</body>
+</html>

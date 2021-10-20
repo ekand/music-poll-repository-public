@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Stats</title>
+    <link rel="stylesheet" type="text/css" media="all" href="../static/css/musicpollstyle.css" th:href="@{/css/musicpollstyle.css}" />
+</head>
+<body>
+<h1>Stats</h1>
+<div id="stats-box">
+    <p>Total number of polls: <span th:text="${numberOfPolls}"></span></p>
+    <p>Total number of votes cast: <span th:text="${totalNumberOfVotes}"></span></p>
+    <p>Most votes in a single poll: <span th:text="${mostVotesInInSinglePoll}"></span></p>
+    <p>Poll with the most votes: <a th:href="@{/viewpoll(id=${pollWithMostVotes.getId()})}" th:text="${pollWithMostVotes.getTitle()}" >View Poll</a></p>
+</div>
+
+<div th:insert="~{footer::copy}">xxx My Filler Content xxx</div>
+</body>
+</html>
+

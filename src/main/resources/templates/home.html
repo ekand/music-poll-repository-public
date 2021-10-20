@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+  <title>Music Poll Website</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link rel="stylesheet" type="text/css" media="all" href="../static/css/musicpollstyle.css" th:href="@{/css/musicpollstyle.css}" />
+  <!--  <link th:href="@{/styles/cssandjs/main.css}" rel="stylesheet" />-->
+</head>
+
+<body>
+
+<!--<div>-->
+<!--  <img src="../../images/gtvglogo.png" alt="GTVG logo" title="GTVG logo"-->
+<!--       th:src="@{/images/gtvglogo.png}" th:alt-title="#{logo}" />-->
+<!--</div>-->
+<h1>Music Poll Website</h1>
+
+
+<div sec:authorize="isAuthenticated()">
+  <h3 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h3>
+</div>
+<div sec:authorize="!isAuthenticated()">
+  <h3 th:inline="text">Hello, anonymous visitor!</h3>
+</div>
+<p>Please select an option</p>
+<ul>
+
+  <!--  <li><a href="hello.html" th:href="@{/hello}">Hello</a></li>-->
+  <li><a href="viewpolls.html" th:href="@{/viewpolls}">View Polls</a></li>
+  <li><a href="createpoll.html" th:href="@{/createpoll}">Create Poll</a></li>
+  <div sec:authorize="!isAuthenticated()">
+    <li><a href="signup.html" th:href="@{/signup}">Sign Up</a></li>
+    <li><a href="login.html" th:href="@{/login}">Login</a></li>
+  </div>
+  <div sec:authorize="isAuthenticated()">
+    <li>
+      <form th:action="@{/logout}" method="post">
+        <input type="submit" value="Sign Out"/>
+      </form>
+    </li>
+  </div>
+  </div>
+</ul>
+
+
+<div th:insert="~{footer::copy}">xxx My Filler Footer Content xxx</div>
+
+</body>
+
+</html>

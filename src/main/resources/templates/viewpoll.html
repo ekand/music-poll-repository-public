@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"   xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>View Single Poll</title>
+    <link rel="stylesheet" type="text/css" media="all" href="../static/css/musicpollstyle.css" th:href="@{/css/musicpollstyle.css}" />
+</head>
+<body>
+
+<h1>View Single Poll </h1>
+<h2><span th:text="${poll.getTitle()}">xxx poll title xxx</span></h2>
+<table>
+    <thead>
+    <tr>
+        <th>Song Title</th>
+        <th>Number of Votes</th>
+        <th>Vote
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="s : ${poll.songList}">
+        <td th:text="${s.title}">xxx filler content song title xxx</td>
+        <td th:text="${songvotesutil.countVotes(poll, s)}">xxx votes xxx</td>
+        <td>
+            <form th:action="@{/submitvote}" method="get">
+                <input type="submit" value="Vote">
+                <input type="hidden" th:value="${poll.id}" name="pollid"/>
+                <input type="hidden" th:value="${s.id}" name="songid"/>
+                <input type="hidden" th:value="${poll.id}" name="pollid"/>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<p th:text="${voteSaveErrorMessage}" style="color:red;"></p>
+<!--<ol th:each="">-->
+<!--    <li>Song 1: <span th:text="${}">XXX</span></li>-->
+<!--    <li>Song 2: <span th:text="${song2}">XXX</span></li>-->
+<!--    <li>Song 3: <span th:text="${song3}">XXX</span></li>-->
+<!--</ol>-->
+
+
+<div th:insert="~{footer::copy}">xxx My Filler Content xxx</div>
+
+
+</body>
+</html>

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Error page</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" media="all" href="../static/css/musicpollstyle.css" th:href="@{/css/musicpollstyle.css}" />
+
+</head>
+<body>
+<h1>Error</h1>
+<p>An Error Occurred</p>
+<a href="home" th:href="@{/home}">Back to Home Page</a>
+</body>
+
+<div th:insert="~{footer::copy}">foo bar</div>
+</html>

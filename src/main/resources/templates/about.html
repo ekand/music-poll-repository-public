@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+  <title>About Music Poll Website</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link rel="stylesheet" type="text/css" media="all" href="../static/css/musicpollstyle.css" th:href="@{/css/musicpollstyle.css}" />
+  <!--  <link th:href="@{/styles/cssandjs/main.css}" rel="stylesheet" />-->
+</head>
+
+<body>
+
+<!--<div>-->
+<!--  <img src="../../images/gtvglogo.png" alt="GTVG logo" title="GTVG logo"-->
+<!--       th:src="@{/images/gtvglogo.png}" th:alt-title="#{logo}" />-->
+<!--</div>-->
+<h1>About Music Poll Website</h1>
+<div id="about-box">
+  <p>Welcome to Music Poll Website! Here you will find various polls.
+    You may vote for the best song in each poll, but you may only vote once per poll.
+  </p>
+  <p>You may also create polls. If you wish to edit or delete your poll, please contact the site administrator.</p>
+  <p>If you are curious to see the source code, you can find it on <a href="https://github.com/ekand-music-poll-website-public">GitHub</a>.</p>
+  <p>Please look around and enjoy your stay!</p>
+  <div th:insert="~{footer::copy}">xxx My Filler Footer Content xxx</div>
+</div>
+</body>
+
+</html>
