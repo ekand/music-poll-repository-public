@@ -4,7 +4,7 @@ A website development project, created for the Per Scholas Full Stack Java Devel
 
 Users of this website may create a poll with a poll title and three song titles. Then users may vote on which is the best song in each poll. Users are limited to one vote per poll.
 
-This website is currently live at [music-poll-website.herokuapp.com](https://music-poll-website.herokuapp.com). (Note that it may take up to 20 seconds for the website to load at first, if my free dyno has gone into sleep mode.)
+This website is no longer active.
 
 ## Technologies
 #### Source Code
